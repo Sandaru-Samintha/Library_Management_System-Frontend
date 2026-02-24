@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import { FiBook, FiLogOut, FiUser } from 'react-icons/fi';
-
+import './Header.css';
 const Header = () => {
 
   
@@ -30,12 +30,12 @@ const Header = () => {
           <div className="user-menu">
                 <button className="user-menu-button">
                   <FiUser />
-                  <span>{user?.memFullName || user?.adminFullName || 'User'}</span>
+                  {/* <span>{user?.memFullName || user?.adminFullName || 'User'}</span> */}
                 </button>
                 <div className="dropdown-menu">
                   <Link to="/member/profile" className="dropdown-item">Profile</Link>
                   <Link to="/admin/profile" className="dropdown-item">Profile</Link>
-                  <button onClick={handleLogout} className="dropdown-item logout-btn">
+                  <button className="dropdown-item logout-btn">
                     <FiLogOut /> Logout
                   </button>
                 </div>
