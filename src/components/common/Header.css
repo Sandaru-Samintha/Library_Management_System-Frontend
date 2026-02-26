@@ -35,6 +35,10 @@
   align-items: center;
   gap: 1.5rem;
 }
+.nav-icon{
+  color: #333;
+   font-size: 25px;
+}
 
 .nav-link {
   text-decoration: none;
