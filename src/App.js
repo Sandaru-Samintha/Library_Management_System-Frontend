@@ -23,6 +23,10 @@ import MyBooks from './components/member/MyBooks';
 import MyFines from './components/member/MyFines';
 import MemberProfile from './components/member/MemberProfile';
 
+//Admin Components
+import AdminDashboard from './components/admin/AdminDashboard';
+import ManageMembers from './components/admin/ManageMembers';
+
 
 function App() {
   return (
@@ -63,6 +67,20 @@ function App() {
                 <Route path="/member/profile" element={
                   <PrivateRoute requiredRole="MEMBER">
                     <MemberProfile />
+                  </PrivateRoute>
+                } />
+
+
+                {/* Admin Routes */}
+                <Route path="/admin/dashboard" element={
+                  <PrivateRoute requiredRole="ADMIN">
+                    <AdminDashboard />
+                  </PrivateRoute>
+                } />
+
+                <Route path="/admin/members" element={
+                  <PrivateRoute requiredRole="ADMIN">
+                    <ManageMembers />
                   </PrivateRoute>
                 } />
               </Routes>
