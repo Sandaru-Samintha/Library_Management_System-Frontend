@@ -20,6 +20,8 @@ import Footer from './components/common/Footer';
 import MemberDashboard from './components/member/MemberDashboard';
 import BrowseBooks from './components/books/BrowseBooks';
 import MyBooks from './components/member/MyBooks';
+import MyFines from './components/member/MyFines';
+import MemberProfile from './components/member/MemberProfile';
 
 
 function App() {
@@ -51,6 +53,16 @@ function App() {
                 <Route path="/member/borrowed" element={
                   <PrivateRoute requiredRole="MEMBER">
                     <MyBooks />
+                  </PrivateRoute>
+                } />
+                <Route path="/member/fines" element={
+                  <PrivateRoute requiredRole="MEMBER">
+                    <MyFines />
+                  </PrivateRoute>
+                } />
+                <Route path="/member/profile" element={
+                  <PrivateRoute requiredRole="MEMBER">
+                    <MemberProfile />
                   </PrivateRoute>
                 } />
               </Routes>
