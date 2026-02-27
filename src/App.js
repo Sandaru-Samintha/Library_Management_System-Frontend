@@ -74,7 +74,7 @@ function App() {
                 {/* Admin Routes */}
                 <Route path="/admin/dashboard" element={
                   <PrivateRoute requiredRole="ADMIN">
-                    <AdminDashboard />
+                    <AdminDashboard  />
                   </PrivateRoute>
                 } />
 

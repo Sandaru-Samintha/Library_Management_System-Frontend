@@ -6,6 +6,7 @@ import adminService from '../../services/adminService';
 import borrowService from '../../services/borrowService';
 import fineService from '../../services/fineService';
 import LoadingSpinner from '../common/LoadingSpinner';
+import ProfileImage from '../common/ProfileImage';
 import './AdminDashboard.css';
 
 const AdminDashboard = () => {
@@ -269,31 +270,31 @@ const AdminDashboard = () => {
       </div>
 
       {/* Quick Actions */}
-      <div className="quick-actions-section">
-        <h2 className="section-title">Quick Actions</h2>
-        <div className="action-buttons">
-          <Link to="/admin/books/add" className="action-btn">
-            <span className="action-icon">➕</span>
+      <div className="dash-quick-actions-section">
+        <h2 className="dash-section-title">Quick Actions</h2>
+        <div className="dash-action-buttons">
+          <Link to="/admin/books/add" className="dash-action-btn">
+            <span className="dash-action-icon">➕</span>
             Add New Book
           </Link>
-          <Link to="/admin/members" className="action-btn">
-            <span className="action-icon">👥</span>
+          <Link to="/admin/members" className="dash-action-btn">
+            <span className="dash-action-icon">👥</span>
             Manage Members
           </Link>
-          <Link to="/admin/borrows" className="action-btn">
-            <span className="action-icon">📋</span>
+          <Link to="/admin/borrows" className="dash-action-btn">
+            <span className="dash-action-icon">📋</span>
             View All Borrows
           </Link>
-          <Link to="/admin/overdue" className="action-btn warning">
-            <span className="action-icon">⚠️</span>
+          <Link to="/admin/overdue" className="dash-action-btn warning">
+            <span className="dash-action-icon">⚠️</span>
             Overdue Books ({overdueBooks.length})
           </Link>
-          <Link to="/admin/today-returns" className="action-btn success">
-            <span className="action-icon">↩️</span>
+          <Link to="/admin/today-returns" className="dash-action-btn success">
+            <span className="dash-action-icon">↩️</span>
             Today's Returns ({todayReturns.length})
           </Link>
-          <Link to="/admin/stats" className="action-btn">
-            <span className="action-icon">📊</span>
+          <Link to="/admin/stats" className="dash-action-btn">
+            <span className="dash-action-icon">📊</span>
             Detailed Statistics
           </Link>
         </div>
@@ -315,7 +316,11 @@ const AdminDashboard = () => {
                   <div key={member.memId} className="member-item">
                     <div className="member-avatar">
                       {member.profileImageUrl ? (
-                        <img src={`${process.env.REACT_APP_IMAGE_URL || 'http://localhost:8080'}${member.profileImageUrl}`} />
+                        <ProfileImage 
+                                                imageUrl={member.profileImageUrl} 
+                                                name={member.memFullName} 
+                                                size={40}
+                                              />
                       ) : (
                         <div className="avatar-placeholder">
                           {member.memFullName?.charAt(0)}

@@ -7,6 +7,8 @@ import fineService from '../../services/fineService';
 import LoadingSpinner from '../common/LoadingSpinner';
 import ProfileImage from '../common/ProfileImage';
 import { FiSearch, FiUser, FiMail, FiPhone, FiCalendar, FiBook, FiDollarSign, FiEdit, FiTrash2, FiEye } from 'react-icons/fi';
+import { RxCross2 } from "react-icons/rx";
+import { TiTick } from "react-icons/ti";
 import './ManageMembers.css';
 
 const ManageMembers = () => {
@@ -330,19 +332,19 @@ const ManageMembers = () => {
                       >
                         <FiEye />
                       </button>
-                      <button 
+                      {/* <button 
                         className="action-btn edit"
                         onClick={() => handleEditMember(member)}
                         title="Edit Member"
                       >
                         <FiEdit />
-                      </button>
+                      </button> */}
                       <button 
                         className={`action-btn ${member.active ? 'deactivate' : 'activate'}`}
                         onClick={() => handleToggleStatus(member.memId, member.active)}
                         title={member.active ? 'Deactivate' : 'Activate'}
                       >
-                        {member.active ? 'Deactivate' : 'Activate'}
+                        {member.active ? <RxCross2 /> : <TiTick />}
                       </button>
                     </div>
                   </td>

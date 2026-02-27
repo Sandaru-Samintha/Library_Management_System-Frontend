@@ -168,23 +168,23 @@
   font-size: 0.8rem;
 }
 
-.quick-actions-section {
+.dash-quick-actions-section {
   margin-bottom: 2rem;
 }
 
-.section-title {
+.dash-section-title {
   color: #333;
   font-size: 1.2rem;
   margin-bottom: 1rem;
 }
 
-.action-buttons {
+.dash-action-buttons {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 1rem;
 }
 
-.action-btn {
+.dash-action-btn {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -197,22 +197,22 @@
   transition: all 0.3s;
 }
 
-.action-btn:hover {
+.dash-action-btn:hover {
   background: #f8f9fa;
   border-color: #3498db;
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.action-btn.warning:hover {
+.dash-action-btn.warning:hover {
   border-color: #f39c12;
 }
 
-.action-btn.success:hover {
+.dash-action-btn.success:hover {
   border-color: #27ae60;
 }
 
-.action-icon {
+.dash-action-icon {
   font-size: 1.2rem;
 }
 
