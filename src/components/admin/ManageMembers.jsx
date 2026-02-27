@@ -7,6 +7,8 @@ import fineService from '../../services/fineService';
 import LoadingSpinner from '../common/LoadingSpinner';
 import ProfileImage from '../common/ProfileImage';
 import { FiSearch, FiUser, FiMail, FiPhone, FiCalendar, FiBook, FiDollarSign, FiEdit, FiTrash2, FiEye } from 'react-icons/fi';
+import { RxCross2 } from "react-icons/rx";
+import { TiTick } from "react-icons/ti";
 import './ManageMembers.css';
 
 const ManageMembers = () => {
@@ -153,7 +155,7 @@ const ManageMembers = () => {
         }
       } else {
         // If only other fields changed, you need an update endpoint
-        showInfo('Profile update endpoint not implemented yet');
+        showError('Profile update endpoint not implemented yet');
       }
     } catch (error) {
       console.error('Error updating member:', error);
@@ -206,13 +208,6 @@ const ManageMembers = () => {
   const closeEditModal = () => {
     setShowEditModal(false);
     setSelectedMember(null);
-  };
-
-  const getFullImageUrl = (imageUrl) => {
-    if (!imageUrl) return null;
-    if (imageUrl.startsWith('http')) return imageUrl;
-    const baseUrl = process.env.REACT_APP_IMAGE_URL || 'http://localhost:8080';
-    return `${baseUrl}${imageUrl}`;
   };
 
   const calculateTotalFines = () => {
@@ -321,7 +316,7 @@ const ManageMembers = () => {
                     </div>
                   </td>
                   <td>
-                    {new Date(member.membershipDate).toLocaleDateString()}
+                    {member.membershipDate ? new Date(member.membershipDate).toLocaleDateString() : 'N/A'}
                   </td>
                   <td>
                     <span className={`status-badge ${member.active ? 'active' : 'inactive'}`}>
@@ -337,19 +332,19 @@ const ManageMembers = () => {
                       >
                         <FiEye />
                       </button>
-                      <button 
+                      {/* <button 
                         className="action-btn edit"
                         onClick={() => handleEditMember(member)}
                         title="Edit Member"
                       >
                         <FiEdit />
-                      </button>
+                      </button> */}
                       <button 
                         className={`action-btn ${member.active ? 'deactivate' : 'activate'}`}
                         onClick={() => handleToggleStatus(member.memId, member.active)}
                         title={member.active ? 'Deactivate' : 'Activate'}
                       >
-                        {member.active ? '🔴' : '🟢'}
+                        {member.active ? <RxCross2 /> : <TiTick />}
                       </button>
                     </div>
                   </td>
@@ -389,7 +384,7 @@ const ManageMembers = () => {
                   {selectedMember.memPhoneNumber && (
                     <p><FiPhone /> {selectedMember.memPhoneNumber}</p>
                   )}
-                  <p><FiCalendar /> Member since: {new Date(selectedMember.membershipDate).toLocaleDateString()}</p>
+                  <p><FiCalendar /> Member since: {selectedMember.membershipDate ? new Date(selectedMember.membershipDate).toLocaleDateString() : 'N/A'}</p>
                   <span className={`status-badge ${selectedMember.active ? 'active' : 'inactive'}`}>
                     {selectedMember.active ? 'Active' : 'Inactive'}
                   </span>
