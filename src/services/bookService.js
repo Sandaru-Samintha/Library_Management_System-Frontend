@@ -18,7 +18,7 @@ const  bookService = {
  },
 
  getAvailableBooks : async()=>{
-  const response = await api.get('/book/public/available');
+  const response = await api.get('/books/public/available');
   return response.data;
  },
  getBooksByGenre : async(genre)=>{
@@ -37,7 +37,7 @@ const  bookService = {
       formdata.append(key,bookData[key]);
     }
   });
-  const response = await api.put('/books/admin/update', formData, {
+  const response = await api.put('/books/admin/update', formdata, {
       headers: { 'Content-Type': 'multipart/form-data' }
     });
     return response.data;
