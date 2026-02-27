@@ -4,7 +4,7 @@ import { useAuth } from '../../context/AuthContext';
 import { useAlert } from '../../context/AlertContext';
 import bookService from '../../services/bookService';
 import borrowService from '../../services/borrowService';
-import { FiSearch, FiFilter, FiBook, FiUser, FiCalendar, FiGrid, FiList, FiX, FiClock, FiCheckCircle } from 'react-icons/fi';
+import { FiSearch, FiFilter, FiBook, FiUser, FiCalendar, FiGrid, FiList, FiX} from 'react-icons/fi';
 import LoadingSpinner from '../common/LoadingSpinner';
 import './BrowseBooks.css';
 
@@ -178,7 +178,7 @@ const BrowseBooks = () => {
         <div className="book-image">
           {book.bookImageUrl ? (
             <img 
-              src={`${process.env.REACT_APP_IMAGE_URL || 'http://localhost:8080/images'}${book.bookImageUrl}`} 
+              src={`${process.env.REACT_APP_IMAGE_URL || 'http://localhost:8080'}${book.bookImageUrl}`} 
               alt={book.bookTitle}
               onError={(e) => {
                 e.target.onerror = null;

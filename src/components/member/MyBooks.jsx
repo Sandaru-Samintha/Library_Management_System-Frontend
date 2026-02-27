@@ -286,7 +286,7 @@ const MyBooks = () => {
                   <div className="book-item-image">
                     {book.bookImageUrl ? (
                       <img 
-                        src={`${process.env.REACT_APP_IMAGE_URL || 'http://localhost:8080/images'}${book.bookImageUrl}`} 
+                        src={`${process.env.REACT_APP_IMAGE_URL || 'http://localhost:8080'}${book.bookImageUrl}`} 
                         alt={book.bookTitle}
                         onError={(e) => {
                           e.target.onerror = null;
