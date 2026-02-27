@@ -30,18 +30,18 @@ const  bookService = {
   return response.data;
  },
 
- addBook : async(bookData)=>{
+addBook: async (bookData) => {
   const formdata = new FormData();
-  Object.keys(bookData).forEach(key =>{
-    if(bookData[key] !== null && bookData !== undefined){
-      formdata.append(key,bookData[key]);
+  Object.keys(bookData).forEach(key => {
+    if (bookData[key] !== null && bookData !== undefined) {
+      formdata.append(key, bookData[key]);
     }
   });
-  const response = await api.put('/books/admin/update', formdata, {
-      headers: { 'Content-Type': 'multipart/form-data' }
-    });
-    return response.data;
-  },
+  const response = await api.post('/books/admin/add', formdata, {
+    headers: { 'Content-Type': 'multipart/form-data' }
+  });
+  return response.data;
+},
 
   updateBookAvailability: async (bookId, totalCopies) => {
     const response = await api.put(`/books/admin/${bookId}/availability?totalCopies=${totalCopies}`);
