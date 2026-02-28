@@ -273,7 +273,7 @@ const AdminDashboard = () => {
       <div className="dash-quick-actions-section">
         <h2 className="dash-section-title">Quick Actions</h2>
         <div className="dash-action-buttons">
-          <Link to="/admin/books/add" className="dash-action-btn">
+          <Link to="/admin/books" className="dash-action-btn">
             <span className="dash-action-icon">➕</span>
             Add New Book
           </Link>
@@ -305,8 +305,8 @@ const AdminDashboard = () => {
         {/* Left Column */}
         <div className="grid-column">
           {/* Recent Members */}
-          <div className="dashboard-card">
-            <div className="card-header">
+          <div className="dash-dashboard-card">
+            <div className="dash-card-header">
               <h3>Recent Members</h3>
               <Link to="/admin/members" className="view-all">View All →</Link>
             </div>
@@ -345,8 +345,8 @@ const AdminDashboard = () => {
           </div>
 
           {/* Today's Returns */}
-          <div className="dashboard-card">
-            <div className="card-header">
+          <div className="dash-dashboard-card">
+            <div className="cdash-ard-header">
               <h3>Due Today</h3>
               <Link to="/admin/today-returns" className="view-all">View All →</Link>
             </div>
@@ -377,8 +377,8 @@ const AdminDashboard = () => {
         {/* Right Column */}
         <div className="grid-column">
           {/* Recent Borrows */}
-          <div className="dashboard-card">
-            <div className="card-header">
+          <div className="dash-dashboard-card">
+            <div className="dash-card-header">
               <h3>Recent Borrows</h3>
               <Link to="/admin/borrows" className="view-all">View All →</Link>
             </div>
@@ -403,8 +403,8 @@ const AdminDashboard = () => {
           </div>
 
           {/* Overdue Books */}
-          <div className="dashboard-card warning-card">
-            <div className="card-header">
+          <div className="dash-dashboard-card warning-card">
+            <div className="dash-card-header">
               <h3>Overdue Books</h3>
               <Link to="/admin/overdue" className="view-all">View All →</Link>
             </div>
