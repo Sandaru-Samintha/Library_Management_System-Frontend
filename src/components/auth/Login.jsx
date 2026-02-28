@@ -122,7 +122,7 @@ const Login = () => {
         <p className="login-subtitle">Sign in to your account</p>
         
         <form onSubmit={handleSubmit}>
-          <div className="form-group">
+          <div className="log-form-group">
             <label>Select Account Type</label>
             <div className="role-selector">
               <button
@@ -151,10 +151,10 @@ const Login = () => {
             </div>
           </div>
           
-          <div className="form-group">
+          <div className="log-form-group">
             <label htmlFor="email">Email address</label>
-            <div className="input-group">
-              <FiMail className="input-icon" />
+            <div className="log-input-group">
+              <FiMail className="log-input-icon" />
               <input
                 id="email"
                 name="email"
@@ -167,10 +167,10 @@ const Login = () => {
             </div>
           </div>
           
-          <div className="form-group">
+          <div className="log-form-group">
             <label htmlFor="password">Password</label>
-            <div className="input-group">
-              <FiLock className="input-icon" />
+            <div className="log-input-group">
+              <FiLock className="log-input-icon" />
               <input
                 id="password"
                 name="password"

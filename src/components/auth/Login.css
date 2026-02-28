@@ -30,11 +30,11 @@
   font-size: 1rem;
 }
 
-.form-group {
+.log-form-group {
   margin-bottom: 1.5rem;
 }
 
-.form-group label {
+.log-form-group label {
   display: block;
   margin-bottom: 0.5rem;
   color: #333;
@@ -103,11 +103,11 @@
   color: #666;
 }
 
-.input-group {
+.log-input-group {
   position: relative;
 }
 
-.input-group input {
+.log-input-group input {
   width: 100%;
   padding: 0.9rem 0.9rem 0.9rem 2.8rem;
   border: 2px solid #e0e0e0;
@@ -116,18 +116,18 @@
   transition: all 0.3s;
 }
 
-.input-group input:focus {
+.log-input-group input:focus {
   outline: none;
   border-color: #3498db;
   box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
 }
 
-.input-group input::placeholder {
+.log-input-group input::placeholder {
   color: #aaa;
   font-size: 0.95rem;
 }
 
-.input-icon {
+.log-input-icon {
   position: absolute;
   left: 1rem;
   top: 50%;

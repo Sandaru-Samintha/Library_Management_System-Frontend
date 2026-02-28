@@ -26,6 +26,9 @@ import MemberProfile from './components/member/MemberProfile';
 //Admin Components
 import AdminDashboard from './components/admin/AdminDashboard';
 import ManageMembers from './components/admin/ManageMembers';
+import ManageBooks from './components/admin/ManageBooks';
+import AllBorrowRecords from './components/admin/AllBorrowRecords';
+import CreateAdmin from './components/admin/CreateAdmin';
 
 
 function App() {
@@ -81,6 +84,24 @@ function App() {
                 <Route path="/admin/members" element={
                   <PrivateRoute requiredRole="ADMIN">
                     <ManageMembers />
+                  </PrivateRoute>
+                } />
+
+                <Route path="/admin/books" element={
+                  <PrivateRoute requiredRole="ADMIN">
+                    <ManageBooks />
+                  </PrivateRoute>
+                } />
+
+                <Route path="/admin/borrows" element={
+                  <PrivateRoute requiredRole="ADMIN">
+                    <AllBorrowRecords />
+                  </PrivateRoute>
+                } />
+
+                <Route path="/admin/create" element={
+                  <PrivateRoute requiredRole="ADMIN">
+                    <CreateAdmin />
                   </PrivateRoute>
                 } />
               </Routes>
