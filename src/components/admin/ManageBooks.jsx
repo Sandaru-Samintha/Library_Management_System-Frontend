@@ -384,10 +384,10 @@ const ManageBooks = () => {
       <div className="page-header">
         <h1>Manage Books</h1>
         <div className="header-actions">
-          <button onClick={handleAddBook} className="btn btn-primary">
+          <button onClick={handleAddBook} className="book-btn book-btn-primary">
             + Add New Book
           </button>
-          <Link to="/admin/dashboard" className="btn btn-secondary">
+          <Link to="/admin/dashboard" className="book-btn book-btn-secondary">
             ← Back to Dashboard
           </Link>
         </div>

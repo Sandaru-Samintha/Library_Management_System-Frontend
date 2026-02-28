@@ -29,6 +29,10 @@ import ManageMembers from './components/admin/ManageMembers';
 import ManageBooks from './components/admin/ManageBooks';
 import AllBorrowRecords from './components/admin/AllBorrowRecords';
 import CreateAdmin from './components/admin/CreateAdmin';
+import AdminProfile from './components/admin/AdminProfile';
+import OverdueBooks from './components/admin/OverdueBooks';
+import TodayReturns from './components/admin/TodayReturns';
+import AdminStats from './components/admin/AdminStats';
 
 
 function App() {
@@ -104,6 +108,31 @@ function App() {
                     <CreateAdmin />
                   </PrivateRoute>
                 } />
+
+                <Route path="/admin/profile" element={
+                  <PrivateRoute requiredRole="ADMIN">
+                    <AdminProfile />
+                  </PrivateRoute>
+                } />
+
+                <Route path="/admin/overdue" element={
+                  <PrivateRoute requiredRole="ADMIN">
+                    <OverdueBooks />
+                  </PrivateRoute>
+                } />
+
+                <Route path="/admin/today-returns" element={
+                  <PrivateRoute requiredRole="ADMIN">
+                    <TodayReturns />
+                  </PrivateRoute>
+                } />
+
+                <Route path="/admin/stats" element={
+                  <PrivateRoute requiredRole="ADMIN">
+                    <AdminStats />
+                  </PrivateRoute>
+                } />
+
               </Routes>
               </main>
               <Footer />
