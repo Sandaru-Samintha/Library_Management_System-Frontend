@@ -10,6 +10,9 @@ import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import PrivateRoute from './components/common/PrivateRoute';
 
+//utils Components
+import About from './components/utils/About';
+import Contact from './components/utils/Contact';
 
 // Common Components
 import Header from './components/common/Header';
@@ -48,6 +51,8 @@ function App() {
                 {/* Public Routes */}
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/contact" element={<Contact />} />
                 <Route path="/" element={<Navigate to="/login" />} />
 
                  {/* Member Routes */}

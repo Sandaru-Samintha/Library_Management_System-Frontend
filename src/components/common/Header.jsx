@@ -86,6 +86,8 @@ const Header = () => {
             </>
           ) : (
             <>
+              <Link to="/about" className="nav-link">About</Link>
+              <Link to="/contact" className="nav-link">Contact</Link>
               <Link to="/login" className="nav-link">Login</Link>
               <Link to="/register" className="register-btn">Register</Link>
             </>
