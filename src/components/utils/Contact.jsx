@@ -53,7 +53,7 @@ const Contact = () => {
     {
       icon: <FiMapPin />,
       title: 'Visit Us',
-      details: ['123 Library Street', 'Knowledge City, KC 12345', 'United States']
+      details: ['123 Library Street', 'Colombo City, CL 12345', 'Sri Lanka']
     },
     {
       icon: <FiPhone />,
@@ -132,13 +132,14 @@ const Contact = () => {
           {/* Map */}
           <div className="contact-map">
             <iframe
-              title="Library Location"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.9663095343008!2d-73.98510768458417!3d40.75889697932681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes%20Square!5e0!3m2!1sen!2sus!4v1644262070645!5m2!1sen!2sus"
+               title="Library of Sri Lanka"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.9984342335925!2d79.8630631!3d6.906074!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2597b05ec61eb%3A0x9c59717e7d332f45!2sNational%20Library%20of%20Sri%20Lanka!5e0!3m2!1sen!2sl!4v1700000000000!5m2!1sen!2sl"
               width="100%"
               height="450"
               style={{ border: 0, borderRadius: '10px' }}
               allowFullScreen=""
               loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
           </div>
 
