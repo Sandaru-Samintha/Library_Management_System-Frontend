@@ -1,0 +1,551 @@
+/* Main Container */
+.overdue-books-container {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Header Section */
+.overdue-books-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.overdue-books-title {
+  color: #333;
+  font-size: 2rem;
+  margin: 0;
+}
+
+.overdue-books-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Button Styles */
+.overdue-books-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+
+.overdue-books-btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.overdue-books-btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.overdue-books-btn-secondary {
+  background-color: #95a5a6;
+  color: white;
+}
+
+.overdue-books-btn-secondary:hover:not(:disabled) {
+  background-color: #7f8c8d;
+  transform: translateY(-2px);
+}
+
+.overdue-books-btn-warning {
+  background-color: #f39c12;
+  color: white;
+}
+
+.overdue-books-btn-warning:hover:not(:disabled) {
+  background-color: #e67e22;
+  transform: translateY(-2px);
+}
+
+.overdue-books-btn-success {
+  background-color: #27ae60;
+  color: white;
+}
+
+.overdue-books-btn-success:hover:not(:disabled) {
+  background-color: #229954;
+  transform: translateY(-2px);
+}
+
+.overdue-books-btn-danger {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.overdue-books-btn-danger:hover:not(:disabled) {
+  background-color: #c0392b;
+  transform: translateY(-2px);
+}
+
+.overdue-books-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Statistics Cards */
+.overdue-books-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.overdue-books-stat-card {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: transform 0.3s;
+}
+
+.overdue-books-stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.overdue-books-stat-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.overdue-books-stat-icon-red {
+  background-color: #ffebee;
+  color: #c62828;
+}
+
+.overdue-books-stat-icon-orange {
+  background-color: #fff3e0;
+  color: #f57c00;
+}
+
+.overdue-books-stat-icon-blue {
+  background-color: #e3f2fd;
+  color: #1976d2;
+}
+
+.overdue-books-stat-icon-purple {
+  background-color: #f3e5f5;
+  color: #7b1fa2;
+}
+
+.overdue-books-stat-content h3 {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+}
+
+.overdue-books-stat-value {
+  color: #333;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* Search Bar */
+.overdue-books-search {
+  margin-bottom: 2rem;
+}
+
+.overdue-books-search-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: all 0.3s;
+}
+
+.overdue-books-search-input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* Table Styles */
+.overdue-books-table-container {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+}
+
+.overdue-books-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1000px;
+}
+
+.overdue-books-table th {
+  background: #f8f9fa;
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #333;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.overdue-books-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #e0e0e0;
+  color: #666;
+}
+
+.overdue-books-row {
+  transition: background-color 0.3s;
+}
+
+.overdue-books-row:hover {
+  background-color: #fff5f5;
+}
+
+.overdue-books-id {
+  font-weight: 600;
+  color: #e74c3c;
+}
+
+/* Cell Styles */
+.overdue-books-book-cell,
+.overdue-books-member-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.overdue-books-book-icon,
+.overdue-books-member-icon {
+  color: #e74c3c;
+  font-size: 1.2rem;
+}
+
+.overdue-books-book-title,
+.overdue-books-member-name {
+  font-weight: 500;
+  color: #333;
+}
+
+.overdue-books-due-date {
+  color: #e74c3c;
+  font-weight: 500;
+}
+
+/* Days Badge */
+.overdue-books-days-badge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.overdue-books-days-normal {
+  background-color: #fff3e0;
+  color: #f57c00;
+}
+
+.overdue-books-days-warning {
+  background-color: #ffebee;
+  color: #e74c3c;
+}
+
+.overdue-books-days-critical {
+  background-color: #c62828;
+  color: white;
+}
+
+/* Fine Amount */
+.overdue-books-fine-amount {
+  color: #e74c3c;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.overdue-books-fine-none {
+  color: #999;
+}
+
+/* Action Buttons */
+.overdue-books-action-buttons {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.overdue-books-action-btn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 1rem;
+}
+
+.overdue-books-action-view {
+  background-color: #e3f2fd;
+  color: #1976d2;
+}
+
+.overdue-books-action-view:hover {
+  background-color: #bbdefb;
+}
+
+.overdue-books-action-reminder {
+  background-color: #fff3e0;
+  color: #f57c00;
+}
+
+.overdue-books-action-reminder:hover {
+  background-color: #ffe0b2;
+}
+
+.overdue-books-action-return {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.overdue-books-action-return:hover {
+  background-color: #c8e6c9;
+}
+
+.overdue-books-action-extend {
+  background-color: #e0f2f1;
+  color: #00796b;
+}
+
+.overdue-books-action-extend:hover {
+  background-color: #b2dfdb;
+}
+
+.overdue-books-action-waive {
+  background-color: #ffebee;
+  color: #c62828;
+}
+
+.overdue-books-action-waive:hover {
+  background-color: #ffcdd2;
+}
+
+/* Empty State */
+.overdue-books-empty {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.overdue-books-empty-icon {
+  font-size: 4rem;
+  color: #27ae60;
+  margin-bottom: 1rem;
+}
+
+.overdue-books-empty h3 {
+  color: #333;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.overdue-books-empty p {
+  color: #999;
+  font-size: 1rem;
+}
+
+/* Modal Styles */
+.overdue-books-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.overdue-books-modal {
+  background: white;
+  border-radius: 8px;
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.overdue-books-modal-small {
+  max-width: 400px;
+}
+
+.overdue-books-modal-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.overdue-books-modal-header h2 {
+  margin: 0;
+  font-size: 1.3rem;
+  color: #333;
+}
+
+.overdue-books-modal-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #999;
+  transition: color 0.3s;
+}
+
+.overdue-books-modal-close:hover {
+  color: #e74c3c;
+}
+
+.overdue-books-modal-body {
+  padding: 1.5rem;
+}
+
+.overdue-books-modal-footer {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+/* Details Grid */
+.overdue-books-details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.overdue-books-details-section h3 {
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+  color: #444;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 0.5rem;
+}
+
+.overdue-books-details-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.overdue-books-details-label {
+  font-weight: 500;
+  color: #666;
+}
+
+.overdue-books-details-value {
+  color: #333;
+  text-align: right;
+}
+
+.overdue-books-text-danger {
+  color: #e74c3c;
+  font-weight: 600;
+}
+
+/* Waive Fine Modal */
+.overdue-books-waive-message {
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.overdue-books-waive-warning {
+  font-size: 0.85rem;
+  color: #e74c3c;
+  font-weight: 500;
+}
+
+/* Reminder Modal */
+.overdue-books-reminder-info {
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.overdue-books-form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.overdue-books-form-group label {
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #444;
+}
+
+.overdue-books-textarea {
+  resize: vertical;
+  padding: 0.75rem;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  font-size: 0.9rem;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+.overdue-books-textarea:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .overdue-books-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .overdue-books-actions {
+    width: 100%;
+  }
+
+  .overdue-books-table {
+    min-width: 800px;
+  }
+
+  .overdue-books-details-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .overdue-books-modal {
+    max-width: 95%;
+  }
+}
