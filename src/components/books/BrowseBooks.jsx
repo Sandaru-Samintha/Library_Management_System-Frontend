@@ -4,8 +4,9 @@ import { useAuth } from '../../context/AuthContext';
 import { useAlert } from '../../context/AlertContext';
 import bookService from '../../services/bookService';
 import borrowService from '../../services/borrowService';
-import { FiSearch, FiFilter, FiBook, FiUser, FiCalendar, FiGrid, FiList, FiX} from 'react-icons/fi';
+import { FiSearch, FiFilter, FiBook, FiUser, FiCalendar, FiGrid, FiList, FiX } from 'react-icons/fi';
 import LoadingSpinner from '../common/LoadingSpinner';
+import BookImage from '../common/BookImage';
 import './BrowseBooks.css';
 
 const BrowseBooks = () => {
@@ -174,63 +175,54 @@ const BrowseBooks = () => {
     const overdue = isOverdue(book.bookId);
 
     return (
-      <div className={`book-card ${borrowed ? 'borrowed' : ''} ${overdue ? 'overdue' : ''}`}>
-        <div className="book-image">
-          {book.bookImageUrl ? (
-            <img 
-              src={`${process.env.REACT_APP_IMAGE_URL || 'http://localhost:8080'}${book.bookImageUrl}`} 
-              alt={book.bookTitle}
-              onError={(e) => {
-                e.target.onerror = null;
-                e.target.src = 'https://via.placeholder.com/200x250?text=No+Cover';
-              }}
-            />
-          ) : (
-            <div className="no-image">
-              <FiBook className="no-image-icon" />
-            </div>
-          )}
+      <div className={`browse-book-card ${borrowed ? 'browse-book-borrowed' : ''} ${overdue ? 'browse-book-overdue' : ''}`}>
+        <div className="browse-book-image-container">
+          <BookImage 
+            imageUrl={book.bookImageUrl} 
+            title={book.bookTitle} 
+            size={200}
+          />
           {borrowed && (
-            <div className="book-badge borrowed">
+            <div className="browse-book-badge">
               {overdue ? '⚠️ Overdue' : '📖 Borrowed'}
             </div>
           )}
         </div>
         
-        <div className="book-details">
-          <h3 className="book-title">{book.bookTitle}</h3>
-          <p className="book-author">
-            <FiUser className="icon" /> {book.bookAuthor || 'Unknown Author'}
+        <div className="browse-book-details">
+          <h3 className="browse-book-title">{book.bookTitle}</h3>
+          <p className="browse-book-author">
+            <FiUser className="browse-icon" /> {book.bookAuthor || 'Unknown Author'}
           </p>
           {book.bookGenre && (
-            <p className="book-genre">
-              <FiBook className="icon" /> {book.bookGenre}
+            <p className="browse-book-genre">
+              <FiBook className="browse-icon" /> {book.bookGenre}
             </p>
           )}
-          <p className="book-isbn">ISBN: {book.bookIsbn || 'N/A'}</p>
+          <p className="browse-book-isbn">ISBN: {book.bookIsbn || 'N/A'}</p>
           
           {borrowed && dueDate && (
-            <div className="book-due-date">
-              <FiCalendar className="icon" />
-              <span className={overdue ? 'overdue-text' : ''}>
+            <div className="browse-book-due">
+              <FiCalendar className="browse-icon" />
+              <span className={overdue ? 'browse-overdue-text' : ''}>
                 Due: {new Date(dueDate).toLocaleDateString()}
                 {overdue && ' (Overdue)'}
               </span>
             </div>
           )}
           
-          <div className="book-stats">
-            <span className={`availability ${book.bookAvailable && book.availableCopies > 0 ? 'available' : 'unavailable'}`}>
+          <div className="browse-book-stats">
+            <span className={`browse-availability ${book.bookAvailable && book.availableCopies > 0 ? 'browse-available' : 'browse-unavailable'}`}>
               {book.bookAvailable && book.availableCopies > 0 ? 'Available' : 'Not Available'}
             </span>
-            <span className="copies">
+            <span className="browse-copies">
               {book.availableCopies || 0} / {book.totalCopies || 0} copies
             </span>
           </div>
 
           {borrowed ? (
             <button 
-              className="return-btn"
+              className="browse-return-btn"
               onClick={() => handleReturn(borrowId)}
               disabled={actionId === borrowId}
             >
@@ -238,7 +230,7 @@ const BrowseBooks = () => {
             </button>
           ) : (
             <button 
-              className={`borrow-btn ${!book.bookAvailable || book.availableCopies === 0 ? 'disabled' : ''}`}
+              className={`browse-borrow-btn ${!book.bookAvailable || book.availableCopies === 0 ? 'browse-disabled' : ''}`}
               onClick={() => handleBorrow(book.bookId)}
               disabled={!book.bookAvailable || book.availableCopies === 0 || actionId === book.bookId}
             >
@@ -257,39 +249,30 @@ const BrowseBooks = () => {
     const overdue = isOverdue(book.bookId);
 
     return (
-      <div className={`book-list-item ${borrowed ? 'borrowed' : ''} ${overdue ? 'overdue' : ''}`}>
-        <div className="list-item-image">
-          {book.bookImageUrl ? (
-            <img 
-              src={`${process.env.REACT_APP_IMAGE_URL || 'http://localhost:8080/images'}${book.bookImageUrl}`} 
-              alt={book.bookTitle}
-              onError={(e) => {
-                e.target.onerror = null;
-                e.target.src = 'https://via.placeholder.com/60x80?text=No+Cover';
-              }}
-            />
-          ) : (
-            <div className="no-image-small">
-              <FiBook />
-            </div>
-          )}
+      <div className={`browse-list-item ${borrowed ? 'browse-list-borrowed' : ''} ${overdue ? 'browse-list-overdue' : ''}`}>
+        <div className="browse-list-image">
+          <BookImage 
+            imageUrl={book.bookImageUrl} 
+            title={book.bookTitle} 
+            size={60}
+          />
         </div>
         
-        <div className="list-item-details">
-          <h3 className="list-item-title">{book.bookTitle}</h3>
-          <p className="list-item-author">
-            <FiUser className="icon" /> {book.bookAuthor || 'Unknown Author'}
+        <div className="browse-list-details">
+          <h3 className="browse-list-title">{book.bookTitle}</h3>
+          <p className="browse-list-author">
+            <FiUser className="browse-icon" /> {book.bookAuthor || 'Unknown Author'}
           </p>
-          <div className="list-item-meta">
-            {book.bookGenre && <span className="list-item-genre">{book.bookGenre}</span>}
-            <span className={`list-item-availability ${book.bookAvailable && book.availableCopies > 0 ? 'available' : 'unavailable'}`}>
+          <div className="browse-list-meta">
+            {book.bookGenre && <span className="browse-list-genre">{book.bookGenre}</span>}
+            <span className={`browse-list-availability ${book.bookAvailable && book.availableCopies > 0 ? 'browse-available' : 'browse-unavailable'}`}>
               {book.availableCopies || 0} copies available
             </span>
           </div>
           {borrowed && dueDate && (
-            <div className="list-item-due">
-              <FiCalendar className="icon" />
-              <span className={overdue ? 'overdue-text' : ''}>
+            <div className="browse-list-due">
+              <FiCalendar className="browse-icon" />
+              <span className={overdue ? 'browse-overdue-text' : ''}>
                 Due: {new Date(dueDate).toLocaleDateString()}
                 {overdue && ' (Overdue)'}
               </span>
@@ -299,7 +282,7 @@ const BrowseBooks = () => {
 
         {borrowed ? (
           <button 
-            className="list-item-return-btn"
+            className="browse-list-return-btn"
             onClick={() => handleReturn(borrowId)}
             disabled={actionId === borrowId}
           >
@@ -307,7 +290,7 @@ const BrowseBooks = () => {
           </button>
         ) : (
           <button 
-            className={`list-item-borrow-btn ${!book.bookAvailable || book.availableCopies === 0 ? 'disabled' : ''}`}
+            className={`browse-list-borrow-btn ${!book.bookAvailable || book.availableCopies === 0 ? 'browse-disabled' : ''}`}
             onClick={() => handleBorrow(book.bookId)}
             disabled={!book.bookAvailable || book.availableCopies === 0 || actionId === book.bookId}
           >
@@ -326,63 +309,63 @@ const BrowseBooks = () => {
   const availableCount = books.filter(b => b.bookAvailable && b.availableCopies > 0).length;
 
   return (
-    <div className="browse-books-container">
+    <div className="browse-container">
       <div className="browse-header">
         <h1 className="browse-title">Browse Library Books</h1>
         <p className="browse-subtitle">Discover your next great read</p>
       </div>
 
       {/* Quick Stats */}
-      <div className="quick-stats">
-        <div className="stat-item">
-          <span className="stat-label">Total Books</span>
-          <span className="stat-value">{books.length}</span>
+      <div className="browse-quick-stats">
+        <div className="browse-stat-item">
+          <span className="browse-stat-label">Total Books</span>
+          <span className="browse-stat-value">{books.length}</span>
         </div>
-        <div className="stat-item">
-          <span className="stat-label">Available</span>
-          <span className="stat-value available">{availableCount}</span>
+        <div className="browse-stat-item">
+          <span className="browse-stat-label">Available</span>
+          <span className="browse-stat-value browse-stat-available">{availableCount}</span>
         </div>
-        <div className="stat-item">
-          <span className="stat-label">Borrowed by You</span>
-          <span className="stat-value borrowed">{borrowedCount}</span>
+        <div className="browse-stat-item">
+          <span className="browse-stat-label">Borrowed by You</span>
+          <span className="browse-stat-value browse-stat-borrowed">{borrowedCount}</span>
         </div>
       </div>
 
       {/* Search and Filter Bar */}
-      <div className="search-filter-bar">
-        <div className="search-box">
-          <FiSearch className="search-icon" />
+      <div className="browse-search-bar">
+        <div className="browse-search-box">
+          <FiSearch className="browse-search-icon" />
           <input
             type="text"
             placeholder="Search by title, author, genre, or ISBN..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="search-input"
+            className="browse-search-input"
           />
           {searchTerm && (
-            <button className="clear-search" onClick={() => setSearchTerm('')}>
+            <button className="browse-clear-search" onClick={() => setSearchTerm('')}>
               <FiX />
             </button>
           )}
         </div>
 
-        <div className="filter-actions">
+        <div className="browse-filter-actions">
           <button 
-            className={`filter-toggle ${showFilters ? 'active' : ''}`}
+            className={`browse-filter-toggle ${showFilters ? 'browse-filter-active' : ''}`}
             onClick={() => setShowFilters(!showFilters)}
           >
             <FiFilter /> Filters
           </button>
           
-          <div className="view-toggle">
+          <div className="browse-view-toggle">
             <button 
-              className={`view-btn ${viewMode === 'grid' ? 'active' : ''}`}
+              className={`browse-view-btn ${viewMode === 'grid' ? 'browse-view-active' : ''}`}
               onClick={() => setViewMode('grid')}
             >
               <FiGrid />
             </button>
             <button 
-              className={`view-btn ${viewMode === 'list' ? 'active' : ''}`}
+              className={`browse-view-btn ${viewMode === 'list' ? 'browse-view-active' : ''}`}
               onClick={() => setViewMode('list')}
             >
               <FiList />
@@ -393,13 +376,13 @@ const BrowseBooks = () => {
 
       {/* Filters Panel */}
       {showFilters && (
-        <div className="filters-panel">
-          <div className="filter-group">
+        <div className="browse-filters-panel">
+          <div className="browse-filter-group">
             <label>View</label>
             <select 
               value={selectedView} 
               onChange={(e) => setSelectedView(e.target.value)}
-              className="filter-select"
+              className="browse-filter-select"
             >
               <option value="all">All Books</option>
               <option value="available">Available Books</option>
@@ -407,12 +390,12 @@ const BrowseBooks = () => {
             </select>
           </div>
 
-          <div className="filter-group">
+          <div className="browse-filter-group">
             <label>Genre</label>
             <select 
               value={selectedGenre} 
               onChange={(e) => setSelectedGenre(e.target.value)}
-              className="filter-select"
+              className="browse-filter-select"
             >
               {genres.map(genre => (
                 <option key={genre} value={genre}>
@@ -422,12 +405,12 @@ const BrowseBooks = () => {
             </select>
           </div>
 
-          <div className="filter-group">
+          <div className="browse-filter-group">
             <label>Availability</label>
             <select 
               value={selectedAvailability} 
               onChange={(e) => setSelectedAvailability(e.target.value)}
-              className="filter-select"
+              className="browse-filter-select"
             >
               <option value="all">All Books</option>
               <option value="available">Available Only</option>
@@ -435,17 +418,17 @@ const BrowseBooks = () => {
             </select>
           </div>
 
-          <button className="clear-filters-btn" onClick={clearFilters}>
+          <button className="browse-clear-filters" onClick={clearFilters}>
             Clear All Filters
           </button>
         </div>
       )}
 
       {/* Results Info */}
-      <div className="results-info">
+      <div className="browse-results-info">
         <p>Showing {filteredBooks.length} of {books.length} books</p>
         {borrowedCount > 0 && (
-          <p className="borrowed-info">
+          <p className="browse-borrowed-info">
             You have {borrowedCount} borrowed book{borrowedCount !== 1 ? 's' : ''}
           </p>
         )}
@@ -453,16 +436,16 @@ const BrowseBooks = () => {
 
       {/* Books Display */}
       {filteredBooks.length === 0 ? (
-        <div className="no-results">
-          <FiBook className="no-results-icon" />
+        <div className="browse-no-results">
+          <FiBook className="browse-no-results-icon" />
           <h3>No books found</h3>
           <p>Try adjusting your search or filters</p>
-          <button className="clear-filters-btn" onClick={clearFilters}>
+          <button className="browse-clear-filters" onClick={clearFilters}>
             Clear All Filters
           </button>
         </div>
       ) : (
-        <div className={`books-container ${viewMode}`}>
+        <div className={`browse-books-container browse-view-${viewMode}`}>
           {filteredBooks.map(book => (
             viewMode === 'grid' ? 
               <BookCard key={book.bookId} book={book} /> : 
